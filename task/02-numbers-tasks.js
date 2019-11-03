@@ -1,19 +1,17 @@
-'use strict';
 
-/********************************************************************************************
+/** ******************************************************************************************
  *                                                                                          *
  * Plese read the following tutorial before implementing tasks:                             *
  * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Numbers_and_dates          *
  * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number  *
  * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math    *
  *                                                                                          *
- ********************************************************************************************/
-
+ ******************************************************************************************* */
 
 /**
  * Returns an area of a rectangle given by width and heigth.
  *
- * @param {numder} width
+ * @param {number} width
  * @param {number} height
  * @return {number}
  *
@@ -22,9 +20,8 @@
  *   5, 5  => 25
  */
 function getRectangleArea(width, height) {
-    throw new Error('Not implemented');
+  return width * height;
 }
-
 
 /**
  * Returns a circumference of circle given by radius.
@@ -37,14 +34,14 @@ function getRectangleArea(width, height) {
  *   3.14 => 19.729201864543903
  *   0    => 0
  */
-function getCicleCircumference(radius) {
-    throw new Error('Not implemented');
+function getCircleCircumference(radius) {
+  return 2 * Math.PI * radius;
 }
 
 /**
  * Returns an average of two given numbers.
  *
- * @param {numder} value1
+ * @param {number} value1
  * @param {number} value2
  * @return {number}
  *
@@ -54,11 +51,11 @@ function getCicleCircumference(radius) {
  *  -3, 3  => 0
  */
 function getAverage(value1, value2) {
-    throw new Error('Not implemented');
+  return Number((BigInt(value1) + BigInt(value2)) / BigInt(2));
 }
 
 /**
- * Returns a distance beetween two points by cartesian coordinates.
+ * Returns a distance between two points by cartesian coordinates.
  *
  * @param {number} x1
  * @param {number} y1
@@ -73,7 +70,7 @@ function getAverage(value1, value2) {
  *   (-5,0) (10,-10) => 18.027756377319946
  */
 function getDistanceBetweenPoints(x1, y1, x2, y2) {
-    throw new Error('Not implemented');
+  return Math.hypot((Math.abs(x1 - x2)), (Math.abs(y1 - y2)));
 }
 
 /**
@@ -89,9 +86,8 @@ function getDistanceBetweenPoints(x1, y1, x2, y2) {
  *   5*x = 0         => 0
  */
 function getLinearEquationRoot(a, b) {
-    throw new Error('Not implemented');
+  return ((0 - b) / a);
 }
-
 
 /**
  * Returns an angle (in radians) between two vectors given by xi and yi, coordinates in Cartesian plane
@@ -111,7 +107,9 @@ function getLinearEquationRoot(a, b) {
  *   (0,1) (1,2)     => 0
  */
 function getAngleBetweenVectors(x1, y1, x2, y2) {
-    throw new Error('Not implemented');
+  let angle = (Math.atan2(y2, x2) - Math.atan2(y1, x1));
+  if (angle < 0) { angle += 2 * Math.PI; }
+  return angle;
 }
 
 /**
@@ -127,9 +125,8 @@ function getAngleBetweenVectors(x1, y1, x2, y2) {
  *     0     => 0
  */
 function getLastDigit(value) {
-    throw new Error('Not implemented');
+  return (value % 10);
 }
-
 
 /**
  * Returns a number by given string representation.
@@ -143,7 +140,7 @@ function getLastDigit(value) {
  * '-525.5'     => -525.5
  */
 function parseNumberFromString(value) {
-    throw new Error('Not implemented');
+  return Number(value);
 }
 
 /**
@@ -159,8 +156,8 @@ function parseNumberFromString(value) {
  *   3,3,3   => 5.196152422706632
  *   1,2,3   => 3.741657386773941
  */
-function getParallelipidedDiagonal(a,b,c) {
-    throw new Error('Not implemented');
+function getParallelipidedDiagonal(a, b, c) {
+  return Math.hypot(a, b, c);
 }
 
 /**
@@ -169,7 +166,7 @@ function getParallelipidedDiagonal(a,b,c) {
  * @param {number} num
  * @param {number} pow
  * @return {number}
- *  
+ *
  * @example:
  *   1234, 0  => 1234
  *   1234, 1  => 1230
@@ -181,7 +178,10 @@ function getParallelipidedDiagonal(a,b,c) {
  *   1678, 3  => 2000
  */
 function roundToPowerOfTen(num, pow) {
-    throw new Error('Not implemented');
+  let step = 1;
+  for (let i = 1; i <= pow; i++) { step *= 10; }
+  const rez = Math.round(num / step);
+  return (rez * step);
 }
 
 /**
@@ -189,8 +189,8 @@ function roundToPowerOfTen(num, pow) {
  * See: https://en.wikipedia.org/wiki/Primality_test
  *
  * @param {number} n
- * @return {bool}
- * 
+ * @return {boolean}
+ *
  * @example:
  *   4 => false
  *   5 => true
@@ -202,7 +202,10 @@ function roundToPowerOfTen(num, pow) {
  *   17 => true
  */
 function isPrime(n) {
-    throw new Error('Not implemented');
+  for (let i = 2; i <= Math.sqrt(n); i++) {
+    if (n % i === 0) { return false; }
+  }
+  return true;
 }
 
 /**
@@ -221,20 +224,20 @@ function isPrime(n) {
  *   toNumber(new Number(42), 0) => 42
  */
 function toNumber(value, def) {
-    throw new Error('Not implemented');
+  return Number(value) ? Number(value) : def;
 }
 
 module.exports = {
-    getRectangleArea: getRectangleArea,
-    getCicleCircumference: getCicleCircumference,
-    getAverage: getAverage,
-    getDistanceBetweenPoints: getDistanceBetweenPoints,
-    getLinearEquationRoot: getLinearEquationRoot,
-    getAngleBetweenVectors: getAngleBetweenVectors,
-    getLastDigit: getLastDigit,
-    parseNumberFromString: parseNumberFromString,
-    getParallelipidedDiagonal: getParallelipidedDiagonal,
-    roundToPowerOfTen: roundToPowerOfTen,
-    isPrime: isPrime,
-    toNumber: toNumber
+  getRectangleArea,
+  getCicleCircumference: getCircleCircumference,
+  getAverage,
+  getDistanceBetweenPoints,
+  getLinearEquationRoot,
+  getAngleBetweenVectors,
+  getLastDigit,
+  parseNumberFromString,
+  getParallelipidedDiagonal,
+  roundToPowerOfTen,
+  isPrime,
+  toNumber,
 };

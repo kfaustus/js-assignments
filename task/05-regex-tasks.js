@@ -1,11 +1,10 @@
-'use strict';
 
-/********************************************************************************************
+/** ******************************************************************************************
  *                                                                                          *
  * Plese read the following tutorial before implementing tasks:                             *
  * https://developer.mozilla.org/en/docs/Web/JavaScript/Guide/Regular_Expressions           *
  *                                                                                          *
- ********************************************************************************************/
+ ******************************************************************************************* */
 
 
 /**
@@ -31,7 +30,7 @@
  * @return {RegExp}
  */
 function getRegexForGuid() {
-   throw new Error('Not implemented');
+  return /^{([0-9A-Fa-f]{8})-([0-9A-Fa-f]{4})-([0-9A-Fa-f]{4})-([0-9A-Fa-f]{4})-([0-9A-Fa-f]{12})}$/i;
 }
 
 
@@ -53,7 +52,7 @@ function getRegexForGuid() {
  *
  */
 function getRegexForPitSpot() {
-   throw new Error('Not implemented');
+  return /^.*p.t\w*/;
 }
 
 
@@ -72,7 +71,7 @@ function getRegexForPitSpot() {
  * @return {RegExp}
  */
 function getRegexForIPv4() {
-   throw new Error('Not implemented');
+  return /^[0-2]?[0-9]?[0-9]\.[0-2]?[0-9]?[0-9]\.[0-2]?[0-9]?[0-9]\.[0-2]?[0-9]?[0-9]$/;
 }
 
 
@@ -91,7 +90,7 @@ function getRegexForIPv4() {
  * @return {RegExp}
  */
 function getRegexForSSN() {
-   throw new Error('Not implemented');
+  return /^(?!000)[0-9]{3}-(?!00)[0-9]{2}-(?!0000)[0-9]{4}$/;
 }
 
 
@@ -105,7 +104,7 @@ function getRegexForSSN() {
  *  - Valid passwords will only be alphanumeric characters.
  *
  * @param {number} minLength
- * @return {Regex}
+ * @return {RegExp}
  *
  * @example
  *   let validator = getPasswordValidator(6);
@@ -116,14 +115,14 @@ function getRegexForSSN() {
  *   'Pa55'.match(validator) => false
  */
 function getPasswordValidator(minLength) {
-   throw new Error('Not implemented');
+  return RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?!.*?[_|\W])[A-z0-9].{" + minLength + ",}$", "g");
 }
 
 
 module.exports = {
-    getRegexForGuid: getRegexForGuid,
-    getRegexForPitSpot: getRegexForPitSpot,
-    getRegexForIPv4: getRegexForIPv4,
-    getRegexForSSN: getRegexForSSN,
-    getPasswordValidator: getPasswordValidator
+  getRegexForGuid,
+  getRegexForPitSpot,
+  getRegexForIPv4,
+  getRegexForSSN,
+  getPasswordValidator,
 };
